@@ -5,7 +5,7 @@ const port = 3000;
 server.use(express.json());
 
 server.get("/", (req, res) => {
-    res.send("Projeto Qual eh a Boa (By: Debora Cristina, Karlisson Breno, Marcelo Araujo e João Victor Carvalho).");
+    res.send("Projeto Qual eh a Boa (By: Debora Cristina, Karlisson Brendo, Marcelo Barros e João Victor Carvalho).");
 });
 
 

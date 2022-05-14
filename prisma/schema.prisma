@@ -6,6 +6,35 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model ComunClient {
+  id                 Int      @id @default(autoincrement())
+  name               String
+  lastname           String
+  email              String
+  password           String
+  age                Int
+  perfil_image       String
+  vaccination_status String
+  city               String
+  state              String
+  createdAt          DateTime @default(now())
+}
+
+model CommercialClient {
+  id                 Int    @id @default(autoincrement())
+  establishment_name String
+  owner_name         String
+  email              String
+  password           String
+  perfil_image       String
+  street             String
+  number             String
+  neighborhood       String
+  city               String
+}
+
+//Fazer o model para eventos
