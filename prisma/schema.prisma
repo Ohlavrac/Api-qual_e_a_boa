@@ -22,10 +22,11 @@ model ComunClient {
   city               String
   state              String
   createdAt          DateTime @default(now())
+  type               Int      @default(0)
 }
 
 model CommercialClient {
-  id                 Int    @id @default(autoincrement())
+  id                 Int     @id @default(autoincrement())
   establishment_name String
   owner_name         String
   email              String
@@ -35,6 +36,26 @@ model CommercialClient {
   number             String
   neighborhood       String
   city               String
+  state              String
+  type               Int     @default(1)
+  Event              Event[]
 }
 
-//Fazer o model para eventos
+model Event {
+  id            Int              @id @default(autoincrement())
+  title         String
+  description   String
+  date          DateTime
+  image         String
+  price         Float
+  capacity      Int
+  confirmations Int              @default(0)
+  street        String
+  number        String
+  neighborhood  String
+  city          String
+  state         String
+  active        Int              @default(1)
+  id_owner      Int
+  owner         CommercialClient @relation(fields: [id_owner], references: [id])
+}

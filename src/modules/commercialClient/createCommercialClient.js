@@ -11,6 +11,7 @@ const createCommercialClient = async (
     number,
     neighborhood,
     city,
+    state,
 ) => {
 
     const clientExist = await prisma.commercialClient.findFirst({
@@ -38,6 +39,7 @@ const createCommercialClient = async (
             number: number,
             neighborhood: neighborhood,
             city: city,
+            state: state,
         }
     });
 

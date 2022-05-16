@@ -51,6 +51,7 @@ router.post("/client/commercial/create", async (req, res) => {
         number,
         neighborhood,
         city,
+        state,
     } = req.body;
 
     const result = await createCommercialClient(
@@ -63,6 +64,7 @@ router.post("/client/commercial/create", async (req, res) => {
         number,
         neighborhood,
         city,
+        state,
     );
 
     console.log(result);
