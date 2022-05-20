@@ -11,7 +11,7 @@ datasource db {
 }
 
 model ComunClient {
-  id                 Int      @id @default(autoincrement())
+  id                 Int                @id @default(autoincrement())
   name               String
   lastname           String
   email              String
@@ -21,8 +21,9 @@ model ComunClient {
   vaccination_status String
   city               String
   state              String
-  createdAt          DateTime @default(now())
-  type               Int      @default(0)
+  createdAt          DateTime           @default(now())
+  type               Int                @default(0)
+  comunClientEvent   comunClientEvent[]
 }
 
 model CommercialClient {
@@ -42,20 +43,29 @@ model CommercialClient {
 }
 
 model Event {
-  id            Int              @id @default(autoincrement())
-  title         String
-  description   String
-  date          DateTime
-  image         String
-  price         Float
-  capacity      Int
-  confirmations Int              @default(0)
-  street        String
-  number        String
-  neighborhood  String
-  city          String
-  state         String
-  active        Int              @default(1)
-  id_owner      Int
-  owner         CommercialClient @relation(fields: [id_owner], references: [id])
+  id               Int                @id @default(autoincrement())
+  title            String
+  description      String
+  date             DateTime
+  image            String
+  price            Float
+  capacity         Int
+  confirmations    Int                @default(0)
+  street           String
+  number           String
+  neighborhood     String
+  city             String
+  state            String
+  active           Int                @default(1)
+  id_owner         Int
+  owner            CommercialClient   @relation(fields: [id_owner], references: [id])
+  comunClientEvent comunClientEvent[]
+}
+
+model comunClientEvent {
+  id            Int         @id @default(autoincrement())
+  idComunClient Int
+  comunClient   ComunClient @relation(fields: [idComunClient], references: [id])
+  idEvent       Int
+  event         Event       @relation(fields: [idEvent], references: [id])
 }
