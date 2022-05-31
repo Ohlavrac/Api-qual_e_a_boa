@@ -10,6 +10,9 @@ const removeEventConfirm = async (id, idComunClient) => {
             idEvent: {equals: id}
         }
     });
+
+    console.log("INFO: "+ relationEventAndClientC);
+
     if (relationEventAndClientC) {
         removeConfirm = await prisma.event.update({
             where: {
@@ -25,9 +28,11 @@ const removeEventConfirm = async (id, idComunClient) => {
                 id: relationEventAndClientC.id
             }
         });
-    }
 
-    return removeConfirm;
+        return removeConfirm;
+    } else {
+        return {msg: "user not found in the queue"};
+    }
 }
 
 module.exports = removeEventConfirm;
